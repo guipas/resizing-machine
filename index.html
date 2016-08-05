@@ -35,33 +35,70 @@
     event.stopPropagation();
     const files = event.originalEvent.dataTransfer.files;
     const pathes = [];
+    console.log(files);
     for (let i = 0; i < files.length; i++) {
-      pathes.push(files[i].path);
+      pathes.push({
+        path: files[i].path,
+        name: files[i].name,
+      });
     }
     doTheWork(pathes);
   });
 
   function doTheWork(images) {
     const options = angular.element($('#options-form')).scope().$ctrl.options;
+    console.log('###');
     console.log('Processing files ...');
-    images.forEach( path => {
-      console.log('file: ' + path);
+    images.forEach( (file, index) => {
+      console.log('file: ' + file.path);
       Jimp
-        .read(path)
+        .read(file.path)
         .then((img) => {
           console.log('size: ' + img.bitmap.width + 'x' + img.bitmap.height);
+
+          /* ROTATION */
+          const rotation = parseInt(options.rotation);
+          if (rotation !== 0) {
+            console.log('Rotating image by ' + rotation + ' degrees');
+            img.rotate(rotation);
+          }
+
+          /* RESIZING */
           if( options.size_choice === 'sizes') {// constrain image to given width and/or height
+            console.log('Resizing by max width/height...');
             let max_width = img.bitmap.width;
             let max_height = img.bitmap.height;
             if (options.max_width) {
               console.log('Max width set (' + options.max_width_value + ')');
-              max_width = options.max_width_value;
+              max_width = parseInt(options.max_width_value);
             }
             if (options.max_height) {
               console.log('Max height set (' + options.max_height_value + ')');
-              max_width = options.max_height_value;
+              max_height = parseInt(options.max_height_value);
             }
+            img.scaleToFit(max_width, max_height);
+          } else if (options.size_choice === 'ratio') {
+            let ratio = 1;
+            if (parseFloat(options.ratio) < 1 && parseFloat(options.ratio) > 0) ratio = parseFloat(options.ratio);
+            console.log('Resizing by ratio (' + ratio + ')');
+            img.scale(ratio);
           }
+
+          /* SAVING */
+          let newPath = file.path;
+          if (options.location === 'auto') {
+            console('File name generated automatically');
+            let newName = '' + Date.now() + '_' + file.name;
+            newPath = file.path.replace(file.name, newName);
+          } else if (options.location === 'custom') {
+            let newName = options.location_name;
+            newName = newName.replace('[i]', index);
+            newName = newName.replace('[time]', Date.now());
+            console.log('Custom file name: ' + newName);
+            newPath = file.path.replace(file.name, newName);
+          } // else we keep original name (override file)
+
+          img.write(newPath, () => console.log('File saved (' + newPath + ')'));
         })
         .catch(err => console.log(err));
     });
