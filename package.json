@@ -1,27 +1,24 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "resizing-machine",
+  "version": "0.1.0",
+  "description": "On the fly image resizing",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron/electron-quick-start.git"
+    "url": "git+https://github.com/guipas/resizing-machine.git"
   },
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial"
+    "resize",
+    "image",
+    "desktop"
   ],
-  "author": "GitHub",
+  "author": "Guillaume P",
   "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/electron/electron-quick-start/issues"
-  },
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "homepage": "https://github.com/guipas/resizing-machine",
   "devDependencies": {
     "electron-prebuilt": "^1.2.0"
   },
