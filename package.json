@@ -27,6 +27,9 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "jimp": "^0.2.24",
+    "jquery": "^3.1.0",
+    "lwip": "0.0.9"
   }
 }

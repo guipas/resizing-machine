@@ -9,8 +9,62 @@
     <app></app>
   </body>
 
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+
 </html>
+
+
+<script>
+  // You can also require other files to run in this process
+  require('./renderer.js');
+
+
+  const $ = require('jquery');
+  const Jimp = require("jimp");
+
+  function preventAll(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  $("html").on("dragover", preventAll);
+  $("html").on("dragleave", preventAll);
+  $("html").on("drop", preventAll);
+
+  $("html").on("drop", '.drop-zone', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const files = event.originalEvent.dataTransfer.files;
+    const pathes = [];
+    for (let i = 0; i < files.length; i++) {
+      pathes.push(files[i].path);
+    }
+    doTheWork(pathes);
+  });
+
+  function doTheWork(images) {
+    const options = angular.element($('#options-form')).scope().$ctrl.options;
+    console.log('Processing files ...');
+    images.forEach( path => {
+      console.log('file: ' + path);
+      Jimp
+        .read(path)
+        .then((img) => {
+          console.log('size: ' + img.bitmap.width + 'x' + img.bitmap.height);
+          if( options.size_choice === 'sizes') {// constrain image to given width and/or height
+            let max_width = img.bitmap.width;
+            let max_height = img.bitmap.height;
+            if (options.max_width) {
+              console.log('Max width set (' + options.max_width_value + ')');
+              max_width = options.max_width_value;
+            }
+            if (options.max_height) {
+              console.log('Max height set (' + options.max_height_value + ')');
+              max_width = options.max_height_value;
+            }
+          }
+        })
+        .catch(err => console.log(err));
+    });
+  }
+
+</script>
