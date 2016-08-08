@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <app></app>
+    <div class="container">
+      <app class=""></app>
+    </div>
   </body>
-
-
 </html>
 
 
@@ -86,21 +86,33 @@
 
           /* SAVING */
           let newPath = file.path;
+          // output folder defined ?
+          if (options.output_folder) {
+            newPath = options.output_folder_value;
+            if (newPath.lastIndexOf('/') !== newPath.length -1 || newPath.lastIndexOf('\\') !== newPath.length -1) {
+              newPath += '/';
+            }
+            newPath += file.name;
+          }
+          const size = '' + img.bitmap.width + 'x' + img.bitmap.height;
           if (options.location === 'auto') {
-            console('File name generated automatically');
-            let newName = '' + Date.now() + '_' + file.name;
+            console.log('File name generated automatically');
+
+            let newName = '' + Date.now() + '_' + size + '_' + file.name;
             newPath = file.path.replace(file.name, newName);
+            //console.log('size: ' + img.bitmap.width + 'x' + img.bitmap.height);
           } else if (options.location === 'custom') {
             let newName = options.location_name;
             newName = newName.replace('[i]', index);
             newName = newName.replace('[time]', Date.now());
+            newName = newName.replace('[size]', size);
             console.log('Custom file name: ' + newName);
             newPath = file.path.replace(file.name, newName);
           } // else we keep original name (override file)
 
           img.write(newPath, () => console.log('File saved (' + newPath + ')'));
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     });
   }
 

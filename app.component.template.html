@@ -1,84 +1,86 @@
-<form class="" id="options-form">
-  <div class="form-group size-group">
-    <input type="radio" name="size-choice" value="sizes" ng-model="$ctrl.options.size_choice">
-    <label for="size-choice">Size limits (pixels)</label>
-    <div class="form-group">
-      <div class="checkbox">
-        <label for="max-width">
-          <input type="checkbox" name="max-width" value="" ng-model="$ctrl.options.max_width">
-          Max Width
-          <input type="text" name="max-width-value" value="" ng-model="$ctrl.options.max_width_value">
-        </label>
+<div id="options" class="row">
+  <form class="" id="options-form">
+    <div class="form-group size-group col-xs-12 col-sm-4 col-md-4">
+      <h2>Size</h2>
+      <input type="radio" name="size-choice" value="sizes" ng-model="$ctrl.options.size_choice">
+      <label for="size-choice">Size limits (pixels)</label>
+      <div class="form-group max-sizes">
+        <div class="checkbox maxwidth">
+          <label for="max-width">
+            <input type="checkbox" name="max-width" value="" ng-model="$ctrl.options.max_width">
+            <span>Max Width</span>
+            <input type="text" name="max-width-value" value="" ng-model="$ctrl.options.max_width_value">
+          </label>
+        </div>
+        <div class="checkbox maxheight">
+          <label for="max-width">
+          <input type="checkbox" name="max-height" value="" ng-model="$ctrl.options.max_height" >
+            <span>Max Height</span>
+            <input type="text" name="max-height-value" value="" ng-model="$ctrl.options.max_height_value">
+          </label>
+        </div>
+
+
       </div>
-      <div class="checkbox">
-        <label for="max-width">
-        <input type="checkbox" name="max-height" value="" ng-model="$ctrl.options.max_height" >
-          Max Height
-          <input type="text" name="max-height-value" value="" ng-model="$ctrl.options.max_height_value">
-        </label>
+      <input type="radio" name="size-choice" value="ratio" ng-model="$ctrl.options.size_choice">
+      <label for="size-choice">Ratio</label>
+      <input type="text" name="ratio-value" value="" ng-model="$ctrl.options.ratio">
+    </div>
+
+    <div class="form-group rotation-group col-xs-12 col-sm-4 col-md-4">
+      <h2>Rotation</h2>
+      <div class="">
+        <label for="rotation">No rotation</label>
+        <input type="radio" name="rotation" value="0"  ng-model="$ctrl.options.rotation">
       </div>
-
-
-    </div>
-    <input type="radio" name="size-choice" value="ratio" ng-model="$ctrl.options.size_choice">
-    <label for="size-choice">Ratio</label>
-    <input type="text" name="ratio-value" value="" ng-model="$ctrl.options.ratio">
-  </div>
-
-  <div class="form-group rotation-group">
-    <div class="">
-      <label for="rotation">No rotation</label>
-      <input type="radio" name="rotation" value="0"  ng-model="$ctrl.options.rotation">
-    </div>
-    <!--
-    <div class="">
-      <label for="rotation">Auto-rotate</label>
-      <input type="radio" name="rotation" value="auto"  ng-model="$ctrl.options.rotation">
-    </div>
-    -->
-    <div class="">
-      <label for="rotation">90° CW</label>
-      <input type="radio" name="rotation" value="90"  ng-model="$ctrl.options.rotation">
-    </div>
-    <div class="">
-      <label for="rotation">180° CW</label>
-      <input type="radio" name="rotation" value="180"  ng-model="$ctrl.options.rotation">
-    </div>
-    <div class="">
-      <label for="rotation">90° CCW</label>
-      <input type="radio" name="rotation" value="-90"  ng-model="$ctrl.options.rotation">
-    </div>
-  </div>
-
-
-  <div class="form-group group-location">
-    <div class="">
-      <label for="location">Auto-rename</label>
-      <input type="radio" name="location" value="auto" ng-model="$ctrl.options.location">
-    </div>
-    <div class="">
-      <label for="location">Same as original</label>
-      <input type="radio" name="location" value="same" ng-model="$ctrl.options.location">
-    </div>
-    <div class="">
-      <label for="location">Custom name</label>
-      <input type="radio" name="location" value="custom" ng-model="$ctrl.options.location">
-      <input type="text" name="location-name-template" value="" ng-model="$ctrl.options.location_name">
-    </div>
-    <div class="">
-      <div class="checkbox">
-        <label for="output">
-          <input type="checkbox" name="output-choice" value="" ng-model="$ctrl.options.output_folder">
-          Specify an output folder
-          <input type="text" name="output" value="" ng-model="$ctrl.options.outup_folder_value">
-        </label>
+      <!--
+      <div class="">
+        <label for="rotation">Auto-rotate</label>
+        <input type="radio" name="rotation" value="auto"  ng-model="$ctrl.options.rotation">
+      </div>
+      -->
+      <div class="">
+        <label for="rotation">90° CW</label>
+        <input type="radio" name="rotation" value="90"  ng-model="$ctrl.options.rotation">
+      </div>
+      <div class="">
+        <label for="rotation">180° CW</label>
+        <input type="radio" name="rotation" value="180"  ng-model="$ctrl.options.rotation">
+      </div>
+      <div class="">
+        <label for="rotation">90° CCW</label>
+        <input type="radio" name="rotation" value="-90"  ng-model="$ctrl.options.rotation">
       </div>
     </div>
 
-    <button type="button" name="button" ng-click="$ctrl.go()" >Go !</button>
-  </div>
-</form>
+    <div class="form-group group-location col-xs-12 col-sm-4 col-md-4">
+      <h2>Location and name</h2>
+      <div class="">
+        <label for="location">Auto-rename</label>
+        <input type="radio" name="location" value="auto" ng-model="$ctrl.options.location">
+      </div>
+      <div class="">
+        <label for="location">Same as original</label>
+        <input type="radio" name="location" value="same" ng-model="$ctrl.options.location">
+      </div>
+      <div class="">
+        <label for="location">Custom name</label>
+        <input type="radio" name="location" value="custom" ng-model="$ctrl.options.location">
+        <input type="text" name="location-name-template" value="" ng-model="$ctrl.options.location_name" placeholder="[time]_[size]_[i].jpg">
+      </div>
+      <div class="">
+        <div class="checkbox">
+          <label for="output">
+            <input type="checkbox" name="output-choice" value="" ng-model="$ctrl.options.output_folder">
+            Specify an output folder
+            <input type="text" name="output" value="" ng-model="$ctrl.options.output_folder_value">
+          </label>
+        </div>
+      </div>
+    </div>
 
-<div class="drop-zone" style="width:400px;height:400px;border:3px dotted black;">
-
+  </form>
+</div>
+<div class="row">
+  <div class="drop-zone" style="width:400px;height:400px;border:3px dotted black;"></div>
 </div>

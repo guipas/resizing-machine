@@ -4,7 +4,9 @@
   "description": "On the fly image resizing",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "prestart": "npm run build:less",
+    "build:less": "node scripts/build-less.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "angular": "^1.5.8",
     "bootstrap": "^3.3.7",
     "jimp": "^0.2.24",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "less": "^2.7.1"
   }
 }

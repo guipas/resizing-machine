@@ -1,0 +1,52 @@
+@import "node_modules/bootstrap/less/bootstrap.less";
+
+@body-bg:               @gray;
+@text-color:            @gray-lighter;
+@font-size-base:       12px;
+@font-size-h2: floor((@font-size-base * 1.25));
+
+
+
+h2 {
+  text-transform: uppercase;
+}
+form {
+  font-weight: normal;
+}
+
+input {
+  background: @gray-light;
+  border-radius: 3px;
+  border: 1px solid @gray-dark;
+  padding: 3px;
+}
+
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#options {
+  background: linear-gradient(to bottom, @body-bg 0%,@gray-dark 100%);
+  margin-top: 20px;
+}
+
+.form-group.rotation-group {
+  border-left: 1px solid @gray-light;
+  border-right: 1px solid @gray-light;
+}
+
+.form-group.max-sizes {
+  padding-left: 10px;
+}
+
+.maxheight input[type="text"],
+.maxwidth input[type="text"] {
+  width: 75px;
+}
+
+.maxheight label span,
+.maxwidth label span {
+  display: inline-block;
+  width: 70px;
+}
