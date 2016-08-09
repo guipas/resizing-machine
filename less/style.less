@@ -1,11 +1,19 @@
 @import "node_modules/bootstrap/less/bootstrap.less";
 
-@body-bg:               @gray;
-@text-color:            @gray-lighter;
+//@body-bg:               @gray;
+//@text-color:            @gray-lighter;
+@gray-lighter: #ddd;
 @font-size-base:       12px;
 @font-size-h2: floor((@font-size-base * 1.25));
 
+@rm-color: #00d0e5;
+@rm-light:             lighten(@rm-color, 20%);
+@rm-lighter:           lighten(@rm-color, 32%);
 
+@input-border-focus:             @rm-color;
+:focus {
+  outline-color: @rm-color;
+}
 
 h2 {
   text-transform: uppercase;
@@ -15,25 +23,47 @@ form {
 }
 
 input {
-  background: @gray-light;
+  //background: @gray-light;
   border-radius: 3px;
-  border: 1px solid @gray-dark;
+  //border: 1px solid @gray-dark;
   padding: 3px;
 }
 
 .container {
-    padding-left: 0px;
-    padding-right: 0px;
 }
 
+/* options form */
 #options {
-  background: linear-gradient(to bottom, @body-bg 0%,@gray-dark 100%);
-  margin-top: 20px;
+  //background: linear-gradient(to bottom, @gray-light 0%, @gray-dark 100%);
+  //border-bottom: 1px solid #e2e2e2;
 }
 
-.form-group.rotation-group {
-  border-left: 1px solid @gray-light;
-  border-right: 1px solid @gray-light;
+#options h2 {
+  text-transform: uppercase;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: @rm-light;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  //color: #000;
+  margin-top: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to bottom, @rm-light 0%, @rm-lighter 100%);
+}
+
+#options .form-group-inner {
+  min-height: 165px;
+}
+
+.form-group.rotation-group .form-group-inner{
+  border-left: 1px solid @gray-lighter;
+  border-right: 1px solid @gray-lighter;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .form-group.max-sizes {
@@ -49,4 +79,43 @@ input {
 .maxwidth label span {
   display: inline-block;
   width: 70px;
+}
+
+#ratio {
+  width:50px;
+}
+
+#custom-name {
+  display: block;
+  margin-left: 15px;
+}
+
+#output-folder {
+  display: block;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+/* drop zone */
+.drop-zone {
+  background: @rm-light;
+  border-top: 1px solid @gray-lighter;
+}
+
+.drop-zone .drop-zone-inner {
+  border: 3px dotted #fff;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  min-height: 250px;
+}
+
+.drop-zone .drop-zone-text {
+  font-size: 36px;
+  //margin-left: 33%;
+  text-align: center;
+  margin-top: 100px;
+  color: #fff;
 }
