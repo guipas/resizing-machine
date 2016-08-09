@@ -10,9 +10,6 @@ class AppController {
       size_choice: "ratio",
     };
   }
-  go() {
-    console.log(this.options);
-  }
 }
 
 const AppComponent = {

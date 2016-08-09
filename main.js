@@ -12,7 +12,8 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
-    height: 590,
+    height: 480,
+    autoHideMenuBar: true,
     resizable: false,
   })
 
@@ -20,7 +21,7 @@ function createWindow () {
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools({ mode: 'bottom' })
+  //mainWindow.webContents.openDevTools({ mode: 'bottom' })
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

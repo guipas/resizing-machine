@@ -15,6 +15,12 @@
   outline-color: @rm-color;
 }
 
+html {background: #ddd;}
+
+body {
+  background: linear-gradient(to bottom, #fff 0%, #ddd 90%);
+}
+
 h2 {
   text-transform: uppercase;
 }
@@ -29,15 +35,29 @@ input {
   padding: 3px;
 }
 
-.container {
+/* drop zone */
+.dragover-zone {
+  display: none;
+  position:absolute;
+  width: 100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+
+  &.dragover {
+    display: block;
+  }
+
+  .dragover-zone-inner {
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    border: 2px dashed #fff;
+    border-radius: 20px;
+  }
 }
 
 /* options form */
-#options {
-  //background: linear-gradient(to bottom, @gray-light 0%, @gray-dark 100%);
-  //border-bottom: 1px solid #e2e2e2;
-}
-
 #options h2 {
   text-transform: uppercase;
   margin-left: -15px;
@@ -96,26 +116,23 @@ input {
   margin-top: 5px;
 }
 
-/* drop zone */
-.drop-zone {
-  background: @rm-light;
-  border-top: 1px solid @gray-lighter;
+.info-bar {
+  background: linear-gradient(to bottom, @rm-light 0%, @rm-lighter 100%);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.drop-zone .drop-zone-inner {
-  border: 3px dotted #fff;
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  min-height: 250px;
-}
+.logs .console {
+  background: white;
+  border: 1px solid #aaa;
+  /* min-height: 50px; */
+  /* max-height: 200px; */
+  overflow: scroll;
+  margin-top: 10px;
+  height: 100px;
 
-.drop-zone .drop-zone-text {
-  font-size: 36px;
-  //margin-left: 33%;
-  text-align: center;
-  margin-top: 100px;
-  color: #fff;
+  .log {
+    display: block;
+    font-family: monospace;
+  }
 }
