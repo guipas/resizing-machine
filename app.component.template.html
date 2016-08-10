@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group rotation-group col-xs-12 col-sm-4 col-md-4">
-      <h2>Rotation</h2>
+      <h2>Transform</h2>
       <div class="form-group-inner">
         <div class="">
           <input type="radio" name="rotation" value="0"  ng-model="$ctrl.options.rotation">
@@ -44,17 +44,40 @@
         -->
         <div class="">
           <input type="radio" name="rotation" value="90"  ng-model="$ctrl.options.rotation">
-          <label for="rotation">90° CW</label>
+          <label for="rotation">Rotate 90° CW</label>
         </div>
         <div class="">
           <input type="radio" name="rotation" value="180"  ng-model="$ctrl.options.rotation">
-          <label for="rotation">180° CW</label>
+          <label for="rotation">Rotate 180° CW</label>
         </div>
         <div class="">
           <input type="radio" name="rotation" value="-90"  ng-model="$ctrl.options.rotation">
-          <label for="rotation">90° CCW</label>
+          <label for="rotation"> Rotate 90° CCW</label>
         </div>
       </div>
+      <hr>
+      <div class="form-group-inner">
+        <div class="">
+          <input type="radio" name="crop" value=""  ng-model="$ctrl.options.crop">
+          <label for="rotation">No croping</label>
+        </div>
+        <div class="">
+          <input type="radio" name="crop" value="square"  ng-model="$ctrl.options.crop">
+          <label for="rotation">Crop to make square (1:1)</label>
+        </div>
+        <div class="">
+          <input type="radio" name="crop" value="rect"  ng-model="$ctrl.options.crop">
+          <label for="rotation">Crop to make rectangular (4:3)</label>
+        </div>
+        <!--
+        <div class="">
+          <input type="radio" name="crop" value="panoramic"  ng-model="$ctrl.options.crop">
+          <label for="rotation">Crop to make panoramic (16:9)</label>
+        </div>
+        -->
+      </div>
+
+
     </div>
 
     <div class="form-group group-location col-xs-12 col-sm-4 col-md-4">
@@ -73,6 +96,7 @@
           <label for="location">Custom name</label>
           <input id="custom-name" type="text" name="location-name-template" value="" ng-model="$ctrl.options.location_name" placeholder="[time]_[size]_[i].jpg">
         </div>
+        <!--
         <div class="">
           <div class="checkbox">
             <label for="output">
@@ -82,6 +106,7 @@
             <input id="output-folder" type="text" name="output" value="" ng-model="$ctrl.options.output_folder_value">
           </div>
         </div>
+        -->
       </div>
     </div>
   </form>

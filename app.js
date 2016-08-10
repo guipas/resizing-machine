@@ -8,6 +8,7 @@ class AppController {
       ratio: "1",
       rotation: "0",
       size_choice: "ratio",
+      crop: "",
     };
   }
 }
