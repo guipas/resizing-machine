@@ -1,11 +1,11 @@
 {
   "name": "resizing-machine",
+  "productName": "Resizing Machine",
   "version": "0.1.0",
   "description": "On the fly image resizing",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "prestart": "npm run build:less",
     "build:less": "node scripts/build-less.js"
   },
   "repository": {
@@ -22,13 +22,13 @@
   "license": "CC0-1.0",
   "homepage": "https://github.com/guipas/resizing-machine",
   "devDependencies": {
-    "electron-prebuilt": "^1.2.0"
+    "electron-prebuilt": "^1.2.0",
+    "less": "^2.7.1"
   },
   "dependencies": {
     "angular": "^1.5.8",
     "bootstrap": "^3.3.7",
     "jimp": "^0.2.24",
-    "jquery": "^3.1.0",
-    "less": "^2.7.1"
+    "jquery": "^3.1.0"
   }
 }
