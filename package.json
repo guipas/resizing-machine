@@ -6,7 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build:less": "node scripts/build-less.js"
+    "build:less": "node scripts/build-less.js",
+    "postinstall": "npm run build:less"
   },
   "repository": {
     "type": "git",
